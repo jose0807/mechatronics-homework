@@ -131,11 +131,11 @@ valid e-mail: False
 """
 #CODIGO
 mail = input("set your e-mail\n")
-mail = mail.strip(" ")
-lenght = len(mail)
-num = mail.find("@")
-point = mail.find(".",num)
-if "@" not in mail or num > point or mail.count("@")>1 or " " in mail or lenght == 0 or point== lenght-1:
+mail = mail.strip(" ")#normalizamos las entradas
+lenght = len(mail)#contamos la longitud del mensaje
+num = mail.find("@")#buscamos un @
+point = mail.find(".",num) # buscamos un . despues de el @
+if "@" not in mail or num > point or mail.count("@")>1 or " " in mail or lenght == 0 or point== lenght-1:#verificamos que tenga @que el punto este despues de @ ylas demas condiciones
     email = False 
     print (f"valid e-mail:{email}")
 else :
@@ -184,14 +184,12 @@ is palindrome: False
 #codigo
 
 word = input ("set your palindrome \n")
-if word.strip().isspace()or len(word.strip())<3:
+if word.strip().isspace()or len(word.strip())<3:#preguntamos si la palabra es espacio o si su longitud es menor a 3 caracteres
     is_palindrome= False 
 else:
-    word="".join(word.lower().strip().split())
-    print(word)
-    word2 = word[::-1]
-    print(word2)
-    if word2 == word:
+    word="".join(word.lower().strip().split())#unimos todo e ignoramos los espacios
+    word2 = word[::-1]#ordenamos la palabra al revez ahora sin espacios
+    if word2 == word: #compara las dos strings resultantes
         is_palindrome =True
     else:
         is_palindrome = False
@@ -245,26 +243,27 @@ invalid input please retry
 #codigo
 
 phrase = input("please set your sentence\n")
-phrase=phrase.strip()
-longest=0
-shortest =len(phrase)+1
-shortest_word=""
+phrase=phrase.strip()#eliminamos los espacios extra
+longest=0#inicializamos la variable longest
+shortest =len(phrase)+1 #le damos un valor grande a la variable shortest
+shortest_word="" #inicia la variable de shortest 
+longest_word="" #inicia la variable de longest
 print (phrase)
 if phrase.isspace():
     print ("invalid input please retry")
 else:
     phrase= phrase.strip()
     word_count= phrase.split()
-    for word in word_count:
-        num=len(word)
-        if longest < num:
-            longest = len(word)
-            longest_word= word
-    for word in word_count:
-            short =len(word)
-            if shortest>short:
-                 shortest= short
-                 shortest_word= word
+    for word in word_count:#busca palabra por palbra 
+        num=len(word)# iguala la longitud de la palabra a una variable
+        if longest < num:#si numero es mayor a longest
+            longest = len(word) #el valor de num pasa a ser el valor de longest
+            longest_word= word #la palabra se guarda en la variable longest_word
+    for word in word_count:#busca en todas las palabras 
+            short =len(word)# el valor de len es igual a la longitud de la palabra
+            if shortest>short:#si shortest es mayor a short
+                 shortest= short #el valor de shortest pasa a ser short
+                 shortest_word= word # el valor de word se guarda en la variable shortest word
     print(f"your word count is {len(word_count)}")
     print(f"your first word is {word_count[0]}")
     print(f"your last word is {word_count[-1]}")
@@ -308,18 +307,18 @@ must set a password, please retry
 """
 #codigo
 password=input("please set your password\n")
-size= len(password)
+size= len(password) 
 print(size)
 is_strong= False
 has_upper=False
 has_lower=False
 has_num=False
 has_special=False
-if size==0:
+if size==0:#evalua que la contraseña no este vacia
     print ("must set a password, please retry")
-elif size<8:
+elif size<8:#si la contraseña tiene menos de 8 caracteres te dice que es debil
      print("your password is weak")
-elif size>=8:
+elif size>=8:#si tu contraseña supera los 8 caracteresevalua las demas caracteristicas que pide
     for character in password:
         if character.isupper():
             has_upper=True
@@ -329,12 +328,12 @@ elif size>=8:
             has_num=True
         elif not character.isalnum():
             has_special=True
-    if has_upper==True and has_lower==True and has_num==True and has_special== True:
+    if has_upper==True and has_lower==True and has_num==True and has_special== True:#si lo tiene todo es fuerte
         is_strong=True
-    if is_strong== True:
+    if is_strong== True:#si es fuerte imprimir password is strong
         print("password strenght:strong" )
     elif has_upper==True and has_lower==True or has_num==True:
-        print("password strength:medium")
+        print("password strength:medium")#si no tiene todas las caracteristicas es medium
     
     else:
         print("password strength:medium")
@@ -391,21 +390,21 @@ please set a valid number
 #codigo
 name=input("please set your product:\n")
 price= input("please set the price\n")
-data = (f"product: {name.strip()} | price: ${price.strip()}")
-try:
+data = (f"product: {name.strip()} | price: ${price.strip()}") #normaliza todo quitando espacios y lo ingresa al formato indicado
+try:#intenta convertir la 2da entrada en float y evaluar  que el 1er caracter
     cost=float(price)
-    if cost <0 or len(name.strip())==0:
+    if cost <0 or len(name.strip())==0 or not name.strip().isalpha():#evaluaque el nombre sea alfanumerico y que el costo sea mayor a 0
         print("please set a valid number or name")
     else:
-        if len(data)==30:
+        if len(data)==30:#evaluan que el string sea de 30 caracteres
             print(f"label:'{data}'")
-        elif len(data)>30:
+        elif len(data)>30:#si el dato es mayor a 30 lo recorta hasta que tenga 30 caracteres
             print(f"label:'{data[:30]}'")
-        elif len(data)<30:
+        elif len(data)<30:#si el dato es menor a 30 le agrega espacios hasta que lleguen a los 30 caracteres
             while len(data)<30:
                 data=data+" "
             print(f"label:'{data}'")
-except ValueError:
+except ValueError:# 
     print("please set a valid number")
 
 """
