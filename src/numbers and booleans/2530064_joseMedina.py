@@ -453,10 +453,36 @@ payroll systems, financial evaluations, and measurement tools.
 """
 
 # REFERENCES
-# References:
-# 1) Python documentation – Built-in Types: Numeric Types (int, float)
-# 2) Python documentation – Boolean type (bool)
-# 3) Python documentation – Expressions and operators
-# 4) Python tutorial – Input validation and exception handling
-# 5) Introductory Programming textbooks and course notes
+"""
+Python Software Foundation.
+Python Documentation – Built-in Types: Numeric Types (int, float, complex).
+https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex
 
+Python Software Foundation.
+Boolean Type — bool.
+https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+
+Python Software Foundation.
+Input and Output — The input() function.
+https://docs.python.org/3/library/functions.html#input
+
+*Python Documentation – Expressions and Operators.
+(Arithmetic, comparison, logical operators)
+https://docs.python.org/3/reference/expressions.html
+
+Real Python.
+Understanding Data Types in Python (Numbers, Booleans, Type Casting).
+https://realpython.com/python-data-types/
+
+W3Schools Python Tutorial.
+Python If…Else, Logical Operators, and Conditions.
+https://www.w3schools.com/python/python_conditions.asp
+
+Automate the Boring Stuff with Python – Chapter 2.
+Flow Control, Boolean Logic, Input Validation.
+https://automatetheboringstuff.com/
+
+Think Python (Allen B. Downey).
+Chapter 7–8: Loops, Conditionals, boolean expressions.
+http://greenteapress.com/thinkpython2/thinkpython2.pdf
+"""
