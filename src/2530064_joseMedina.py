@@ -35,10 +35,30 @@ Outputs:
 Validations:
 temp_c must be convertible to float.
 Kelvin temperature must not be physically impossible (>= 0.0).
+Test cases:
+
+Normal
+Input: 25
+Salida:
+Fahrenheit: 77.0
+Kelvin: 298.15
+High temperature: False
+
+Border (30°C)
+Input: 30
+Salida:
+Fahrenheit: 86.0
+Kelvin: 303.15
+High temperature: True
+
+Error
+Input: -300
+Salida:
+Error: invalid input
 
 """
 # (CODE HERE)
-
+"""
 temp = input("set your temperature in celsius\n")
 high_temp=False
 try:
@@ -56,7 +76,7 @@ try:
         print("Error:invalid input")
     
 except ValueError:
-    print("error : invalid input")
+    print("error : invalid input")"""
 """
 PROBLEM 2: Work hours and overtime payment
 Description:
@@ -74,10 +94,66 @@ Validations:
 hours_worked >= 0
 hourly_rate > 0
 If not satisfied, print "Error: invalid input".
+
+test cases
+
+Normal
+Input: hours=45, rate=100
+Salida:
+Regular pay: 4000.0
+Overtime pay: 750.0
+Total pay: 4750.0
+Has overtime: True
+
+Border (40 horas)
+Input: hours=40, rate=120
+Salida:
+Regular pay: 4800.0
+Overtime pay: 0.0
+Total pay: 4800.0
+Has overtime: False
+
+Error
+Input: hours=-5, rate=100
+Salida:
+Error: invalid input
 """
 
 # (CODE HERE)
+"""
+hours_worked = input("please set your worked hours\n")
+hourly_rate = input("please set your hourly rate\n")
+valid =False#inicializamos variables
+has_overtime = False
+overtime_payment=0
+try:#verificamos que las variables que se introdujeron son compatibles
+   pay= float(hourly_rate)
+   time= float (hours_worked)
+   valid =True
+    
+except ValueError:
+    print ("you have an invalid input either in hourly rate or hours worked")
 
+if valid==True: #verificamos que sean compatibles las unidades
+    if pay <= 0 or time<0:#verificamos que los valores sean factibles
+        print("Error:invalid input") 
+    elif time>40:#verificamos que haya horas extra
+        regular_payment= 40*pay #calculaamos el valor de las horas regulares
+        overtime_payment = (time-40)*(pay*1.5)  #calculamos el valor de las horas extra
+        total_payment = regular_payment + overtime_payment #valor total
+        has_overtime=True
+        print(f"regular pay : {regular_payment}")
+        print(f"overtime pay : {overtime_payment}")
+        print(f"your payment is {total_payment}")
+        print(f"has overtime:{has_overtime}")
+    else:
+        total_payment = time* pay #calculamos solamente el valor total
+        print(f"your total payment is : ")
+        print(f"regular pay : {total_payment}")
+        print(f"overtime pay : {overtime_payment}")
+        print(f"your payment is : {total_payment}")
+        print(f"has overtime:{has_overtime}")
+"""
 """
 PROBLEM 3: Discount eligibility with booleans
 Description:
@@ -94,11 +170,62 @@ Validations:
 purchase_total >= 0.0
 is_student_text and is_senior_text must be "YES" or "NO"
 Otherwise print "Error: invalid input".
+
+test cases
+
+Normal
+Input: purchase_total=1500, student=NO, senior=NO
+Salida:
+Discount eligible: True
+Final total: 1350.0
+
+Border
+Input: purchase_total=1000, student=NO, senior=NO
+Salida:
+Discount eligible: True
+Final total: 900.0
+
+Error
+Input: purchase_total=500, student=MAYBE, senior=NO
+Salida:
+Error: invalid input
+
 """
 
 # (CODE HERE)
-
-
+"""
+print ("welcome to the discount elegibility system")
+purchase_total= input("set your total purchase\n")#definimos las entradas
+is_student=input("are you a student\n YES/NO\n").upper() 
+is_senior= input("are you a senior citizen\n YES/NO\n").upper()
+valid=False  #definimos bools que nos seran de utilidad
+student_conf=False
+senior_conf=False   
+affirmations =["YES","NO"] #definimos una lista con las posibles opciones a elegir
+try:# intente convertir el string de purchase a float
+  purchase = float(purchase_total)
+  if purchase >= 0.0: #ademas verificamos que nuestra cantidad sea mayor a 0
+    valid =True
+except ValueError:
+  print("please set a valid total")
+for i in affirmations:#buscamos que las entradas de is_student y is senior solo sean YES o NO
+  if is_student == i:
+    student_conf=True #bool que confirma que la entrada es YES o NO
+  if is_senior== i:
+    senior_conf=True #bool que confirma que la entrada es YES o NO
+if valid and student_conf and senior_conf:#buscamos que todas las entradas sean validas
+    if is_student=="YES" or is_senior=="YES" or purchase>=1000.0:#evaluamos para que tenga descuento
+      discount=True
+    else:
+      discount=False
+    print(f"Discount elegible : {discount}")
+    if discount:
+        print(f"final total: {purchase*.9}")
+    else:
+        print(f"final total: {purchase}")
+else:
+  print("error:invalid input")
+"""
 """
 PROBLEM 4: Basic statistics of three integers
 Description:
@@ -116,10 +243,59 @@ Outputs:
 "All even:" true|false
 Validations:
 All three values must be convertible to int.
+
+test cases
+
+Normal
+Input: 4, 8, 12
+Salida:
+Sum: 24
+Average: 8.0
+Max: 12
+Min: 4
+All even: True
+
+Border (número impar mezclado)
+Input: 2, 3, 6
+Salida:
+Sum: 11
+Average: 3.6666666666666665
+Max: 6
+Min: 2
+All even: False
+
+Error
+Input: 3, abc, 5
+Salida:
+Error: invalid number
 """
 
 # (CODE HERE)
-
+"""
+print("welcome to the statistics calculator")
+numbers=[]#inicializamos una lista
+counter=0#definimos variables que nos serviran mas tarde
+while True:#nos pedira que volvamos a ingresar los numeros hasta que estos sean enteros
+    num1 = input("please set your first \n")
+    num2 = input("please set your second \n")
+    num3 = input("please set your third \n")
+    try:#verificamos que los numeros sean enteros
+        nat1= int(num1)
+        nat2= int(num2)
+        nat3= int(num3)
+        numbers.extend([nat1,nat2,nat3])#agregamos todo a numbers
+        break #rompe el ciclo si las condiciones se cumplen
+    except ValueError:
+        print("error:invalid number")#mensaje de error si la entrada no es valor numerico
+for number in numbers:#compara si los valores son pares
+    if number%2==0:
+        counter=counter+1
+print(f"sum:{sum(numbers)}")#imprime la suma de los numeros
+print(f"average:{(sum(numbers))/3}")#imprime el promedio de los numeros
+print(f"maximum value:{max(numbers)}")#imprime el valor maximo de los numeros
+print(f"minimum value: {min(numbers)}")# imprime el valor minimo de los numeros
+print(f"all even: {counter==3}")#nos dice si todos los valores son pares
+"""
 """
 PROBLEM 5: Loan eligibility (income and debt ratio)
 Description:
@@ -137,10 +313,56 @@ Validations:
 - monthly_debt >= 0.0
 - credit_score >= 0
 - Otherwise print "Error: invalid input".
+
+test cases
+
+Normal
+Input: income=9000, debt=2000, score=700
+Salida:
+Debt ratio: 0.22
+Eligible: True
+
+Border
+Input: income=8000, debt=3200, score=650
+Salida:
+Debt ratio: 0.4
+Eligible: True
+
+Error
+Input: income=0, debt=500, score=700
+Salida:
+Error: invalid input
+
+
 """
 
 # (CODE HERE)
+"""
+print("welcome to the debt elegibility system")
+while True:#mientras qeu mis condiciones no se cumplan el codigo se repetira
+    monthly_income=input("set your income\n")
+    monthly_debt = input("set your monthly debt studio\n")
+    credit_score = input("set your creditscore")
 
+    try:#prueba que las entradas si sean compatibles con los datos requeridos
+        income=float(monthly_income)
+        debt=float(monthly_debt)
+        score=int(credit_score)
+        if income>0 and debt>=0 and score>=0:
+            break
+        else:
+            print("Error: invalid input.") 
+    except ValueError:#mensajes de error por formato incorrecto
+        print("please insert a valid input")
+debt_ratio=debt/income#calculo para el debt ratio
+if income >=8000.0 and debt_ratio<=.4 and score>=650:#se busca por las condiciones de elgibilidad
+    elegible=True
+else:
+    elegible= False
+#salidas    
+print(f"Debt ratio: {round(debt_ratio,2)}")
+print(f"Eligible: {elegible}")
+"""
 """
 PROBLEM 6: Body Mass Index (BMI) and category flag
 Description:
@@ -158,20 +380,77 @@ Validations:
 weight_kg > 0.0
 height_m > 0.0
 Otherwise print "Error: invalid input".
+
+test cases
+
+Normal
+Input: weight=70, height=1.75
+Salida:
+BMI: 22.86
+Underweight: False
+Normal: True
+Overweight: False
+
+Border
+Input: weight=50, height=1.70
+Salida:
+BMI: 17.30
+Underweight: True
+Normal: False
+Overweight: False
+
+Error
+Input: weight=-60, height=1.70
+Salida:
+Error: invalid input
+
  """
 
 #(CODE HERE)
+"""
+print("welcome to the BMI index calculator")
+is_underweight=False#inicializa booleanos que se necesitran para mas adelante
+is_normal=False
+is_overweight = False
+while True:#la introduccion se repetira hasta que los valores den las condiciones
+    weight_kg = input("set your weight in kilograms\n ")
+    height= input("set your heigh in meters")
+    valid=False#en caso de repetir el ciclo vuelve a ser false
+    try:#verifica que sean compatibles las entradas
+        Weight = float( weight_kg)
+        h =float( height)
+        valid=True#verifica si si cumplen las caracteristicas
+    except ValueError:
+        print("error : invalid input")
+    if not valid or Weight<=0.0 or h<=0.0: #verifica que las condiciones del problema se cumplan
+        print("Error:invalid input")
+    else:
+        break
 
-
+bmi=Weight/(h*h)#calcula el bmi
+if bmi< 18.5:#clasifica el bmi en una categoria
+    is_underweight=True
+elif bmi>=18.5 and bmi<25:
+    is_normal=True
+else:
+    is_overweight=True
+#salidas
+print(f"BMI:{round(bmi,2)}")
+print(f"Underweight: {is_underweight}")
+print(f"Normal: {is_normal}")
+print(f"Overweight: {is_overweight}")
+"""
 # CONCLUSIONS
-# Integers and floats work together in many real-life calculations, allowing
-# programs to model quantities, rates, and ratios. Boolean values arise from
-# comparisons and form the basis of decisions through if-statements. Proper
-# validation prevents incorrect results and runtime errors such as division by
-# zero or negative values where they are not allowed. Logical operators like
-# and, or, and not enable complex conditions such as discount eligibility,
-# loan approval, and category classification. These patterns are present in
-# payroll systems, financial evaluations, and measurement tools.
+"""
+Integers and floats work together in many real-life calculations, allowing
+programs to model quantities, rates, and ratios. Boolean values arise from
+comparisons and form the basis of decisions through if-statements. Proper
+validation prevents incorrect results and runtime errors such as division by
+zero or negative values where they are not allowed. Logical operators like
+and, or, and not enable complex conditions such as discount eligibility,
+loan approval, and category classification. These patterns are present in
+payroll systems, financial evaluations, and measurement tools.
+"""
 
 # REFERENCES
 # References:
@@ -180,6 +459,4 @@ Otherwise print "Error: invalid input".
 # 3) Python documentation – Expressions and operators
 # 4) Python tutorial – Input validation and exception handling
 # 5) Introductory Programming textbooks and course notes
-#
-# GITHUB REPOSITORY
-# URL: ______________________________________________
+

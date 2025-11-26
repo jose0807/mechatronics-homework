@@ -72,7 +72,7 @@ Input: "     Pedro"
 Output:
 invalid input please reset the program.
 """
-
+"""
 full_name = input("introduce your full name\n")
 list=full_name.split()
 if full_name.isspace() or len(list)<2 : #FULL NAME MUST NOT BE BLANK OR LESS THAN TWO WORDS
@@ -89,7 +89,7 @@ else:
             initials= initials +"."+  word # KEEPS ALL THE UPPER CASES IN A SINGLE STRING
     print (f"initials: {initials.strip('.')}") #PRITNS AND GETS RID OF THE INITIAL POINT THAT LEAVES THE ALGORITHM
     
-
+"""
 """
 Problem 2: Simple Email Validator (structure + domain)
 Description:
@@ -130,7 +130,7 @@ valid e-mail: False
 
 """
 #CODIGO
-mail = input("set your e-mail\n")
+"""mail = input("set your e-mail\n")
 mail = mail.strip(" ")#normalizamos las entradas
 lenght = len(mail)#contamos la longitud del mensaje
 num = mail.find("@")#buscamos un @
@@ -142,7 +142,7 @@ else :
     email = True
     print(f"valid e-mail:{email}")
     print (mail [num:lenght])
-    
+    """
 
 """
 PROBLEM 3: Palindrome Checker (ignoring spaces and case)
@@ -182,7 +182,7 @@ is palindrome: False
 
 """
 #codigo
-
+"""
 word = input ("set your palindrome \n")
 if word.strip().isspace()or len(word.strip())<3:#preguntamos si la palabra es espacio o si su longitud es menor a 3 caracteres
     is_palindrome= False 
@@ -194,7 +194,7 @@ else:
     else:
         is_palindrome = False
 print(f"is palindrome:{is_palindrome}")
-
+"""
 """
 PROBLEM 4: Sentence Word Stats (lengths and first/last word)
 Description:
@@ -241,7 +241,7 @@ invalid input please retry
 
 """
 #codigo
-
+"""
 phrase = input("please set your sentence\n")
 phrase=phrase.strip()#eliminamos los espacios extra
 longest=0#inicializamos la variable longest
@@ -269,7 +269,7 @@ else:
     print(f"your last word is {word_count[-1]}")
     print(f"your longest word is {longest_word} with a lenght of {longest}")
     print(f"your shortest word is {shortest_word} with a lenght of {shortest}")
-
+"""
 """
 
 PROBLEM 5: Password Strength Classifier
@@ -306,6 +306,7 @@ must set a password, please retry
 
 """
 #codigo
+"""
 password=input("please set your password\n")
 size= len(password) 
 print(size)
@@ -338,7 +339,7 @@ elif size>=8:#si tu contraseña supera los 8 caracteresevalua las demas caracter
     else:
         print("password strength:medium")
 
-
+"""
 """
 PROBLEM 6: Product Label Formatter (fixed-width text)
 
@@ -388,6 +389,7 @@ please set a valid number
 
 """
 #codigo
+"""
 name=input("please set your product:\n")
 price= input("please set the price\n")
 data = (f"product: {name.strip()} | price: ${price.strip()}") #normaliza todo quitando espacios y lo ingresa al formato indicado
@@ -406,7 +408,7 @@ try:#intenta convertir la 2da entrada en float y evaluar  que el 1er caracter
             print(f"label:'{data}'")
 except ValueError:# 
     print("please set a valid number")
-
+"""
 """
  CONCLUSIONS
 
