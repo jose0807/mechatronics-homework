@@ -11,7 +11,7 @@ A counter is used to keep track of how many repetitions have occurred, while an 
 It is essential to define a clear exit condition to prevent infinite loops that could freeze the program or consume unnecessary resources.
 This document will describe each problem, outline the input and output design, specify the necessary validations, and explain the proper use of for and while loops in iterations, menus, and repeated user inputs.
 
-Principles and Best Practices
+Principles and good Practices
 
 Use the for loop when you know the number of iterations beforehand
 (for example, looping from 1 to 10).
@@ -103,7 +103,6 @@ Validations:
 
 Test cases:
 1) Normal:
-Even sum 1..n: 56
 Enter base: 6
 Enter limit: 7
  x 1 = 6
@@ -380,10 +379,15 @@ Menus and password-based systems are common examples where while loops work espe
 Nested loops make it possible to create patterns—such as asterisks arranged in triangles—and help reinforce the idea of repetition occurring inside another repetition.
 
 9. REFERENCIAS 
-https://docs.python.org/3/tutorial/controlflow.html
-https://www.youtube.com/watch?v=-EZREF7Hp6s
-https://www.youtube.com/watch?v=x-qbx7vXuxA
-https://www.youtube.com/watch?v=w53HiWSZnzU
-https://www.youtube.com/watch?v=YEWxlbffgxE
-https://libros.metabiblioteca.org/server/api/core/bitstreams/a567dd25-1e96-4c0f-9b6a-7a844d0eb577/content
+1- https://docs.python.org/3/tutorial/controlflow.html
+
+2- https://www.youtube.com/watch?v=-EZREF7Hp6s
+
+3- https://www.youtube.com/watch?v=x-qbx7vXuxA
+
+4- https://www.youtube.com/watch?v=w53HiWSZnzU
+
+5- https://www.youtube.com/watch?v=YEWxlbffgxE
+
+6- https://libros.metabiblioteca.org/server/api/core/bitstreams/a567dd25-1e96-4c0f-9b6a-7a844d0eb577/content
 """
