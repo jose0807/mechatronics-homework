@@ -1,12 +1,133 @@
+"""
+PORTADA
+Student Name: JOSE CARLOS MEDINA LOPEZ
+Student ID:2530064
+Group: 1-1
+Assignment: CRUD Project Bakery Inventory CRUD
+
+EXECUTIVE SUMMARY
+This program implements a CRUD (Create, Read, Update, Delete) system for a 
+bakery inventory using Python functions. A nested dictionary structure is used 
+to store each type of bread. Every key in the main dictionary represents a 
+product identifier, and its value is another dictionary containing fields such 
+as name, price, and remaining quantity.
+The program includes:
+- Creating new bread types
+- Deleting existing bread types
+- Updating price or quantity
+- Listing all products
+- Processing orders, reducing quantities, and calculating totals
+The menu-driven interface allows users to interact dynamically with the 
+inventory. Input validation functions prevent invalid numbers or empty fields 
+from crashing the program. This CRUD demonstrates how in-memory data 
+structures can be manipulated through well-defined functions.
+
+PROBLEM DESCRIPTION
+This program manages a bakery inventory containing various bread types. 
+A nested dictionary (Option A) was chosen as the main structure:
+products = {
+    "mexican sweet bread": {
+        "name": "mexican sweet bread",
+        "price": 10.5,
+        "quantity remaining": 20
+    },
+    ...
+}
+Reason for choosing nested dictionaries:
+1) Fast lookup using product identifiers.
+2) Allows grouping of product attributes in a readable way.
+3) Easy to update individual fields inside each product.
+4) Direct access without searching through lists.
+INPUTS (AS USED IN YOUR CODE)
+1. Menu option:
+   - User enters by number or name: 
+     "1", "new type of bread", "2", "delete type of bread", "3", etc.
+2. For creating a bread type:
+   - key (product identifier)
+   - name (product name)
+   - quantity (as string, later validated and converted to int)
+   - price (as string, later validated and converted to float)
+3. For deleting a bread type:
+   - key (must match existing key exactly)
+4. For updating:
+   - key
+   - price (can be empty → None)
+   - quantity (can be empty → None)
+5. For orders:
+   - key (bread type)
+   - quantity (int)
+   - YES/NO confirmation-
+OUTPUTS (AS PRODUCED BY YOUR CODE)-
+- "your product X has been added under the key Y"
+- "error: invalid input"
+- "error:the key is not in the dictionary"
+- "X deleted succesfully"
+- "please set a valid price"
+- "please set a valid quantity"
+- "you cant have a negative value"
+- "your quantity must not be less than 0"
+- "currently we don't have X"
+- "sorry we don't have enough X in inventory"
+- Listing of all products with all fields printed
+- Total cost after placing an order
+
+REALISTIC TEST CASES (BASED ON YOUR PROGRAM BEHAVIOR)
+
+TEST CASE 1 — NORMAL 
+User selects: 1 (new type of bread)
+Inputs:
+  key = "banana bread"
+  name = "banana bread"
+  quantity = "15"
+  price = "22"
+Expected program behavior:
+  - input_validation() converts price→22.0, quantity→15
+  - adding_bread_type() adds the new dictionary entry
+Program Output:
+  "your product banana bread has been added under the key banana bread"
+  Then listing() prints all products including the new one:
+      product: banana bread
+       name: banana bread
+       price: 22.0
+       quantity remaining: 15
+
+TEST CASE 2 — BORDER CASE 
+User selects: 3 
+Inputs:
+  key = "donut"
+  price = ""     (empty → means do not update)
+  quantity = "100"
+Expected program behavior:
+  - input_validation() returns price=None, quantity=100
+  - updating_quantity_or_price() updates only "quantity remaining"
+Program Output:
+  (prints donut's updated fields)
+   name donut
+   price 8.5
+   quantity remaining 100
+
+TEST CASE 3 — ERROR CASE 
+User selects: 1 (new type of bread)
+Inputs:
+  key = "badbread"
+  name = "bad bread"
+  quantity = "5"
+  price = "abc"
+Expected program behavior:
+  - input_validation() detects price cannot convert to float
+Program Output:
+  "please set a valid price"
+  Item is NOT added
+"""
 #CRUD  ventas de pan(inventario):
 
 def adding_bread_type(key:str,name:str,price:float,quantity:int):
     """
     Docstring for adding_bread_type:
     this function adds a new index to the main dictionary
-    :param key: main index'x main identifier
+    :param key: main index's main identifier
     :type key: str
-    :param name: name of the type of roduct(bread) this index contains
+    :param name: name of the type of product(bread) this index contains
     :type name: str
     :param price: cost per piece
     :type price: float
@@ -43,11 +164,11 @@ def updating_quantity_or_price(key:str,price:float=None,quantity:int=None):
      Docstring for updating_quantity_or_price:
      this function updates the price or quantity of a product in the dictionary
      
-     :param key: producto del que queremos cambiar el precio
+     :param key: product which we want to actualize
      :type key: str
-     :param price: precio al que queremos cambiar el producto
+     :param price: price to which we want to adjust our price
      :type price: float
-     :param quantity: cantidad de producto con el que contamos
+     :param quantity: quantity in existance
      :type quantity: int
      """
      
@@ -96,9 +217,9 @@ def listing():
 def order(bread:dict,):
      """
      Docstring for order
-     this function recieves a dictionary containing
+     this function receives a dictionary containing
      types of bread we want to buy and the quantity
-     of bread we need and caluclates the price we'd
+     of bread we need and calculates the price we'd
      need to pay to get that order.
      :param bread: dictionary containing our information.
      :type bread: dict
@@ -159,7 +280,6 @@ def input_validation(price, quantity):
         
         return True, price, quantity
                 
-
 products={
     "mexican sweet bread":{"name":"mexican sweet bread",
                             "price":10.5,
@@ -193,7 +313,6 @@ products={
             "quantity remaining": 67,},
 }
 
-
 options={
     "1": "new type of bread",
     "2": "delete type of bread",
@@ -217,7 +336,7 @@ while keep_going:
         ans=input("do you wish to try again?")
         keep_going=finalization(ans)
     elif operation == "new type of bread":
-         print("welcome to the adition menu")
+         print("welcome to the addition menu")
          key=input("please set your new product's identifier\n")
          name=input("please now set your products name \n")
          valid=False
@@ -233,7 +352,7 @@ while keep_going:
                  listing()
          
     elif operation == "delete type of bread":
-         print("welcome to the udeleting menu.\n here you can delete a product of your choice")
+         print("welcome to the deleting menu.\n here you can delete a product of your choice")
          print(f"we currently have \n")
          listing()
          valid=False
@@ -243,7 +362,7 @@ while keep_going:
          listing()
 
     elif operation == "update inventory":
-         print("welcome to the updating menu.\n here you can update the pice and quantity of our products")
+         print("welcome to the updating menu.\n here you can update the price and quantity of our products")
          print(f"we currently have \n")
          listing()
          print("if you  only wish to update one aspect just leave the other blank")
@@ -298,4 +417,25 @@ while keep_going:
          "YES OR NO\n")
          keep_going=finalization(ans)
          print("have a nice day")
-         
+"""
+CONCLUSIONS
+The CRUD structure made the inventory system organized, separating creation, 
+deletion, updating, and ordering into their own functions. This modularity 
+improves clarity and reduces errors. Nested dictionaries worked efficiently 
+because each bread type could be accessed instantly by its identifier and 
+updated easily.
+A significant challenge was input validation, especially when converting 
+price and quantity from raw user input. The validation function helped 
+prevent invalid conversions and improved program safety.
+This CRUD can be extended to persistent storage by saving the dictionary 
+into a JSON file or interacting with a database for long-term inventory 
+management.
+
+REFERENCES
+1) Python Documentation – Data Structures (dict, list)
+   https://docs.python.org/3/tutorial/datastructures.html
+2) Python Documentation – Functions
+   https://docs.python.org/3/tutorial/controlflow.htmlefining-functions
+3) CRUD in Python (RealPython)
+   https://realpython.com/python-dicts/
+"""
