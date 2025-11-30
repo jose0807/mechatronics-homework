@@ -1,11 +1,11 @@
 """
-Manejo de Listas, Tuplas y Diccionarios en Python
-ALUMNO: Jose Carlos Medina Lopez
-2530064
-IM 1-1
+lists touples and dictionaries management in python
+student: Jose Carlos Medina Lopez
+student's id: 2530064
+course: IM 1-1
 
-executive summary
-
+"""
+"""
 Executive Summary
 
 This document presents six problems designed to practice Python
@@ -22,20 +22,28 @@ frequency counting, and a simple contact directory.
 The document highlights how these collections help organize,
 process, and retrieve data efficiently in real-world programs.
 
-Good Practices and Principles 
+Good Practices and Principles
 
-Strings are immutable: any modification creates a new string.
+- Use lists when you need to add, remove, or modify elements frequently. Their mutability
+  allows flexible operations such as append(), remove(), pop(), and insert().
 
-Always normalize user input with strip() and lower() before comparing it.
+- Use tuples for data that must not change, such as coordinates, fixed configuration
+  values, or constant records. Their immutability protects the data from accidental
+  modification during program execution.
 
-Avoid magic numbers when slicing; clearly document what each slice represents.
+- Use dictionaries when fast lookup by key is required. Descriptive keys such as
+  "name", "age", "price", or "grade" make the data easier to understand and access.
 
-Prefer built-in string methods instead of rewriting basic functionality.
+- Avoid modifying a list while iterating over it unless the logic is fully controlled,
+  because it can lead to unexpected behavior or skipped elements.
 
-The order of validation matters: check for empty input first, then check its format.
+- Use clear and descriptive key names in dictionaries to improve readability and maintainability.
 
-Write clean code using descriptive variable names and clear, meaningful messages.
+- Write readable code, use explicit variable names in lower_snake_case, and display clear
+  messages for the user in English.
 """
+
+
 """
 Problem 1:
 Description:
@@ -155,7 +163,7 @@ else:
     point_a = (x1, y1)
     point_b = (x2, y2)
 
-    distance = (((x2 - x1)*2 + (y2 - y1)*2)*0.5)
+    distance = (((x2 - x1)**2 + (y2 - y1)**2)**0.5)
     midpoint = ((x1 + x2) / 2, (y1 + y2) / 2)
 
     print("Point A:", point_a)
@@ -165,6 +173,7 @@ else:
 
 """
 Problem 3:
+
 Description:
 This program manages a small product catalog using a dictionary.
 It reads a product name and a quantity, checks if the product exists,
@@ -237,6 +246,7 @@ else:
 
 """
 Problem 4:
+
 Description:
 This program manages student grades using a dictionary where each
 key is a student's name and each value is a list of float grades.
@@ -485,15 +495,16 @@ through a specific key, avoiding the need to scan the entire structure.
 When combined, these collections allow powerful patterns—such as dictionaries
 containing lists—which make it possible to group related information while still
 enabling fast access through descriptive keys.
+
 Referencias
-https://ellibrodepython.com/tuplas-python
+1- https://ellibrodepython.com/tuplas-python
 
-https://elpythonista.com/tuplas-en-python-tuple
+2- https://elpythonista.com/tuplas-en-python-tuple
 
-https://ellibrodepython.com/listas-en-python
+3- https://ellibrodepython.com/listas-en-python
 
-https://ebac.mx/blog/listas-en-python
+4- https://ebac.mx/blog/listas-en-python
 
-https://ellibrodepython.com/diccionarios-en-python
+5- https://ellibrodepython.com/diccionarios-en-python
 """
 
